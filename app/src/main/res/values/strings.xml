@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">MovieBox</string>
+    <string name="title_home">Module Home</string>
+    <string name="title_detail">Module Detail</string>
+</resources>
