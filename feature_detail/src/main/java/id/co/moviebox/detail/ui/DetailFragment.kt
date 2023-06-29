@@ -13,7 +13,7 @@ import id.co.moviebox.detail.R
 import id.co.moviebox.detail.databinding.DetailFragmentBinding
 import id.co.moviebox.detail.vm.DetailViewModel
 import id.co.moviebox.service_genre.domain.entity.DetailUser
-import id.co.moviebox.service_genre.domain.entity.User
+import id.co.moviebox.service_genre.domain.entity.Genre
 
 class DetailFragment(override val layout: Int = R.layout.detail_fragment) : BaseFragment() {
 
@@ -70,25 +70,9 @@ class DetailFragment(override val layout: Int = R.layout.detail_fragment) : Base
             onSuccess = {
                 showProfile(it)
                 if (setFavorite) {
-                    val user = User(
-                        it.login,
+                    val user = Genre(
                         it.id,
-                        it.node_id,
-                        it.avatar_url,
-                        it.gravatar_id,
-                        it.url,
-                        it.html_url,
-                        it.followers_url,
-                        it.following_url,
-                        it.gists_url,
-                        it.starred_url,
-                        it.subscriptions_url,
-                        it.organizations_url,
-                        it.repos_url,
-                        it.events_url,
-                        it.received_events_url,
-                        it.type,
-                        it.site_admin
+                        it.name
                     )
                     viewModel.setAsFavorite(user)
                 }

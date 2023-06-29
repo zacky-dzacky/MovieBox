@@ -47,7 +47,7 @@ class FavoriteFragment(override val layout: Int = R.layout.favorite_fragment): B
     private fun initUI() {
         favoriteAdapter = context?.let { FavoriteAdapter(it) { view, user ->
             val req = NavDeepLinkRequest.Builder
-                .fromUri("app://detail/${user.login}".toUri())
+                .fromUri("app://detail/${user.name}".toUri())
                 .build()
             view.findNavController().navigate(req)
         }

@@ -10,26 +10,26 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import id.co.moviebox.home.databinding.UserItemBinding
-import id.co.moviebox.service_genre.domain.entity.User
+import id.co.moviebox.service_genre.domain.entity.Genre
 import java.util.ArrayList
 import java.util.Locale
 
 class FavoriteAdapter(
     private val mContext: Context,
-    private val itemClick: (view: View, user: User) -> Unit
-): ListAdapter<User, FavoriteAdapter.UserViewHolder>(DiffCallback())  {
+    private val itemClick: (view: View, user: Genre) -> Unit
+): ListAdapter<Genre, FavoriteAdapter.UserViewHolder>(DiffCallback())  {
 
-    private var filteredList: MutableList<User> = ArrayList()
-    private var unFilteredList: MutableList<User> = ArrayList()
+    private var filteredList: MutableList<Genre> = ArrayList()
+    private var unFilteredList: MutableList<Genre> = ArrayList()
 
-    class DiffCallback : DiffUtil.ItemCallback<User>() {
-        override fun areItemsTheSame(oldItem: User, newItem: User): Boolean {
+    class DiffCallback : DiffUtil.ItemCallback<Genre>() {
+        override fun areItemsTheSame(oldItem: Genre, newItem: Genre): Boolean {
             return oldItem.id == newItem.id
         }
 
         override fun areContentsTheSame(
-            oldItem: User,
-            newItem: User
+            oldItem: Genre,
+            newItem: Genre
         ): Boolean {
             return oldItem == newItem
         }
@@ -43,13 +43,10 @@ class FavoriteAdapter(
         val binding: UserItemBinding
     ) : RecyclerView.ViewHolder(binding.root) {
 
-        fun bindView(item: User) {
-            Glide.with(mContext)
-                .load(item.avatar_url)
-                .circleCrop()
-                .into(binding.imageView2)
-            binding.textView5.text = item.login
-            binding.textView6.text = item.repos_url
+        fun bindView(item: Genre) {
+
+            binding.textView5.text = item.id
+            binding.textView6.text = item.name
             binding.clUser.setOnClickListener {
                 itemClick.invoke(it, item)
             }
@@ -66,8 +63,8 @@ class FavoriteAdapter(
         holder.bindView(getItem(position))
     }
 
-    fun getFilteredResults(textFilter: String): List<User> {
-        val results = arrayListOf<User>()
+    fun getFilteredResults(textFilter: String): List<Genre> {
+        val results = arrayListOf<Genre>()
         filteredList.clear()
         filteredList.addAll(unFilteredList)
         for (item in filteredList) {
@@ -85,11 +82,11 @@ class FavoriteAdapter(
         return results
     }
 
-    fun setData(list: MutableList<User>) {
+    fun setData(list: MutableList<Genre>) {
         unFilteredList = list
     }
 
-    fun updateFullList(model: User) {
+    fun updateFullList(model: Genre) {
         for (i in unFilteredList.indices) {
             if (unFilteredList[i].id == model.id) {
 //                val modelSelectCoin = UserDto()

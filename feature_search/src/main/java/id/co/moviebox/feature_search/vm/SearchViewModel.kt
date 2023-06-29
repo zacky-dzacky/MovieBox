@@ -4,6 +4,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import androidx.paging.PagingData
 import androidx.paging.cachedIn
+import id.co.moviebox.service_genre.data.api.dto.MovieDto
 import id.co.moviebox.service_genre.domain.entity.SearchUser
 import id.co.moviebox.service_genre.domain.repository.SearchRepository
 import kotlinx.coroutines.flow.Flow
@@ -14,8 +15,8 @@ class SearchViewModel @Inject constructor(
 ): ViewModel(){
 
 
-    fun searchUserByQuery(query: String): Flow<PagingData<SearchUser>> {
-        return searchUseCase.searchUser(query, 1)
+    fun searchUserByQuery(query: String): Flow<PagingData<MovieDto>> {
+        return searchUseCase.getMoviesByGenre(query, 1)
             .cachedIn(viewModelScope)
     }
 }

@@ -3,7 +3,7 @@ package id.co.moviebox.detail.vm
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import id.co.moviebox.base_component.extention.StatefulLiveData
-import id.co.moviebox.service_genre.domain.entity.User
+import id.co.moviebox.service_genre.domain.entity.Genre
 import id.co.moviebox.service_genre.domain.usecase.GetDetailLocalUseCase
 import id.co.moviebox.service_genre.domain.usecase.GetDetailUseCase
 import id.co.moviebox.service_genre.domain.usecase.SetFavoritelUseCase
@@ -45,11 +45,11 @@ class DetailViewModel @Inject constructor(
         getDetailUser.get(username)
     }
 
-    fun setAsFavorite(userID: User) {
+    fun setAsFavorite(userID: Genre) {
         setFavorite.get(userID)
     }
 
-    fun unSetAsFavorite(userID: User) {
+    fun unSetAsFavorite(userID: Genre) {
         unSetFavorite.get(userID)
     }
 

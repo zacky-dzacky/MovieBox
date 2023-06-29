@@ -13,7 +13,7 @@ interface UserLocalDao {
     suspend fun getAll(): List<UserLocal>
 
 
-    @Query("SELECT * FROM UserLocal WHERE login = :userID LIMIT 1")
+    @Query("SELECT * FROM UserLocal WHERE name = :userID LIMIT 1")
     suspend fun findByUserID(userID: String): UserLocal?
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)

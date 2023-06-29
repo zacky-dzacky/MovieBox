@@ -2,7 +2,7 @@ package id.co.moviebox.service_genre.di
 import dagger.Module
 import dagger.Provides
 import id.co.moviebox.service_genre.domain.repository.UserLocalRepository
-import id.co.moviebox.service_genre.domain.repository.UserRepository
+import id.co.moviebox.service_genre.domain.repository.MoviesRepository
 import id.co.moviebox.service_genre.domain.usecase.GetDetailLocalUseCase
 import id.co.moviebox.service_genre.domain.usecase.GetDetailUseCase
 import id.co.moviebox.service_genre.domain.usecase.GetFavoriteUseCase
@@ -14,7 +14,7 @@ import id.co.moviebox.service_genre.domain.usecase.UnSetFavoritelUseCase
 class UserUseCaseModule {
 
     @Provides
-    fun provideGetDetailUseCase(repository: UserRepository): GetDetailUseCase {
+    fun provideGetDetailUseCase(repository: MoviesRepository): GetDetailUseCase {
         return GetDetailUseCase(repository)
     }
 
@@ -24,7 +24,7 @@ class UserUseCaseModule {
     }
 
     @Provides
-    fun provideGetUsersUseCase(repository: UserRepository): GetUsersUseCase {
+    fun provideGetUsersUseCase(repository: MoviesRepository): GetUsersUseCase {
         return GetUsersUseCase(repository)
     }
 

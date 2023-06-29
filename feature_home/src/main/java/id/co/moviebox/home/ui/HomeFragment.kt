@@ -39,7 +39,7 @@ class HomeFragment(override val layout: Int = R.layout.home_fragment): BaseFragm
     private fun initUI() {
         homeAdapter = context?.let { HomeAdapter(it) { view, user ->
                 val req = NavDeepLinkRequest.Builder
-                    .fromUri("app://detail/${user.login}".toUri())
+                    .fromUri("app://detail/${user.name}".toUri())
                     .build()
                 view.findNavController().navigate(req)
             }
@@ -50,7 +50,7 @@ class HomeFragment(override val layout: Int = R.layout.home_fragment): BaseFragm
     private fun setObserver() {
 
         viewModel.run {
-            getUsers.listen(
+            getGenres.listen(
                 viewLifecycleOwner,
                 onSuccess = {
                     homeAdapter?.submitList(it)

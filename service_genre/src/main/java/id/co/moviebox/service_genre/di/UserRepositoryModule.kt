@@ -4,28 +4,28 @@ import android.content.Context
 import dagger.Module
 import dagger.Provides
 import id.co.moviebox.service_genre.data.api.flow.ShowSearchUserSource
-import id.co.moviebox.service_genre.data.api.mapper.SearchUserDtoMapper
+import id.co.moviebox.service_genre.data.api.mapper.MoviesByGenreMapper
 import id.co.moviebox.service_genre.data.api.mapper.UserDtoMapper
-import id.co.moviebox.service_genre.data.api.mapper.UsersDtoMapper
+import id.co.moviebox.service_genre.data.api.mapper.GenresDtoMapper
 import id.co.moviebox.service_genre.data.api.repository.SearchRepositoryImpl
-import id.co.moviebox.service_genre.data.api.repository.UserRepositoryImpl
+import id.co.moviebox.service_genre.data.api.repository.MovieRepositoryImpl
 import id.co.moviebox.service_genre.data.api.service.UserApi
 import id.co.moviebox.service_genre.data.local.dao.UserLocalDao
 import id.co.moviebox.service_genre.data.local.mapper.UsersLocalMapper
 import id.co.moviebox.service_genre.data.local.repository.UserLocalRepositoryImpl
 import id.co.moviebox.service_genre.domain.repository.SearchRepository
 import id.co.moviebox.service_genre.domain.repository.UserLocalRepository
-import id.co.moviebox.service_genre.domain.repository.UserRepository
+import id.co.moviebox.service_genre.domain.repository.MoviesRepository
 
 @Module
 class UserRepositoryModule {
 
     @Provides
-    fun provideUserRepository(context: Context, userApi: UserApi, userLocalDao: UserLocalDao): UserRepository {
-        return UserRepositoryImpl(
+    fun provideUserRepository(context: Context, userApi: UserApi, userLocalDao: UserLocalDao): MoviesRepository {
+        return MovieRepositoryImpl(
             context,
             userApi,
-            UsersDtoMapper(),
+            GenresDtoMapper(),
             UserDtoMapper(),
             userLocalDao,
             UsersLocalMapper()
@@ -51,7 +51,7 @@ class UserRepositoryModule {
     fun provideShowSearchUserSource(userApi: UserApi): ShowSearchUserSource {
         return ShowSearchUserSource(
             userApi,
-            SearchUserDtoMapper()
+            MoviesByGenreMapper()
         )
     }
 

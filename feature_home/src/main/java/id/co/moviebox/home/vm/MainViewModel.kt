@@ -13,7 +13,7 @@ class MainViewModel @Inject constructor(
     getFavoriteUseCase: GetFavoriteUseCase
 ): ViewModel() {
 
-    val getUsers = StatefulLiveData(
+    val getGenres = StatefulLiveData(
         getUsersUseCase,
         viewModelScope,
         true
@@ -26,7 +26,7 @@ class MainViewModel @Inject constructor(
     )
 
     fun getUsers() {
-        getUsers.get(GetUserReq.DEFAULT)
+        getGenres.get(GetUserReq.DEFAULT)
     }
 
     fun getFavoriteUsers() {

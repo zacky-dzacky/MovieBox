@@ -17,7 +17,6 @@ import id.co.moviebox.R
 import id.co.moviebox.base_component.ui.BaseActivity
 import id.co.moviebox.databinding.HostActivityBinding
 
-
 class HostActivity(layout: Int = R.layout.host_activity): BaseActivity(layout) {
 
     private lateinit var binding: HostActivityBinding

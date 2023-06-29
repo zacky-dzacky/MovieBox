@@ -32,7 +32,7 @@ class SearchFragment(
 
         val adapter = context?.let { SearchUserAdapter(it) { view, user ->
             val req = NavDeepLinkRequest.Builder
-                .fromUri("app://detail/${user.login}".toUri())
+                .fromUri("app://detail/${user.id}".toUri())
                 .build()
             view.findNavController().navigate(req)
         }

@@ -3,10 +3,10 @@ package id.co.moviebox.service_genre.domain.usecase
 import id.co.moviebox.base_component.model.Result
 import id.co.moviebox.base_component.service.BaseUseCase
 import id.co.moviebox.service_genre.domain.entity.DetailUser
-import id.co.moviebox.service_genre.domain.repository.UserRepository
+import id.co.moviebox.service_genre.domain.repository.MoviesRepository
 
 class GetDetailUseCase(
-    private val repository: UserRepository
+    private val repository: MoviesRepository
 ): BaseUseCase<String, DetailUser>() {
 
     override val default: DetailUser

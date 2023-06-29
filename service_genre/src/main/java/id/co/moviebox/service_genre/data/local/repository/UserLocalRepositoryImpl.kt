@@ -5,62 +5,30 @@ import id.co.moviebox.service_genre.data.local.dao.UserLocalDao
 import id.co.moviebox.service_genre.data.local.entity.UserLocal
 import id.co.moviebox.service_genre.data.local.mapper.UsersLocalMapper
 import id.co.moviebox.service_genre.domain.entity.DetailUser
-import id.co.moviebox.service_genre.domain.entity.User
+import id.co.moviebox.service_genre.domain.entity.Genre
 import id.co.moviebox.service_genre.domain.repository.UserLocalRepository
 
 class UserLocalRepositoryImpl(
     private val userLocalDao: UserLocalDao,
     private val usersLocalMapper: UsersLocalMapper
 ): UserLocalRepository{
-    override suspend fun getAllFavoriteUser(): List<User> {
+    override suspend fun getAllFavoriteUser(): List<Genre> {
         return usersLocalMapper(userLocalDao.getAll())
     }
 
-    override suspend fun setFavoriteUser(user: User): Result<Unit> {
+    override suspend fun setFavoriteUser(user: Genre): Result<Unit> {
         val userLocal = UserLocal(
-            user.login,
             user.id,
-            user.node_id,
-            user.avatar_url,
-            user.gravatar_id,
-            user.url,
-            user.html_url,
-            user.followers_url,
-            user.following_url,
-            user.gists_url,
-            user.starred_url,
-            user.subscriptions_url,
-            user.organizations_url,
-            user.repos_url,
-            user.events_url,
-            user.received_events_url,
-            user.type,
-            user.site_admin
+            user.name
         )
         userLocalDao.insertAll(userLocal)
         return Result(Unit)
     }
 
-    override suspend fun unSetFavoriteUser(user: User): Result<Unit> {
+    override suspend fun unSetFavoriteUser(user: Genre): Result<Unit> {
         val userLocal = UserLocal(
-            user.login,
             user.id,
-            user.node_id,
-            user.avatar_url,
-            user.gravatar_id,
-            user.url,
-            user.html_url,
-            user.followers_url,
-            user.following_url,
-            user.gists_url,
-            user.starred_url,
-            user.subscriptions_url,
-            user.organizations_url,
-            user.repos_url,
-            user.events_url,
-            user.received_events_url,
-            user.type,
-            user.site_admin
+            user.name
         )
         userLocalDao.delete(userLocal)
         return Result(Unit)
@@ -70,28 +38,28 @@ class UserLocalRepositoryImpl(
 
         val asdf = userID
         val localUser = userLocalDao.findByUserID(asdf)
-        val userData = DetailUser(
-            localUser?.login ?: "",
-            localUser?.id ?: "",
-            localUser?.node_id ?: "",
-            localUser?.avatar_url ?: "",
-            localUser?.gravatar_id ?: "",
-            localUser?.url ?: "",
-            localUser?.html_url ?: "",
-            localUser?.followers_url ?: "",
-            localUser?.following_url ?: "",
-            localUser?.gists_url?: "",
-            localUser?.starred_url?: "",
-            localUser?.subscriptions_url?: "",
-            localUser?.organizations_url?: "",
-            localUser?.repos_url?: "",
-            localUser?.events_url?: "",
-            localUser?.received_events_url?: "",
-            localUser?.type?: "",
-            localUser?.site_admin ?: "n", "", "", "", "", "", "", "", "",
-            "", "", "", "", "", ""
-        )
+//        val userData = DetailUser(
+//            localUser?.login ?: "",
+//            localUser?.id ?: "",
+//            localUser?.node_id ?: "",
+//            localUser?.avatar_url ?: "",
+//            localUser?.gravatar_id ?: "",
+//            localUser?.url ?: "",
+//            localUser?.html_url ?: "",
+//            localUser?.followers_url ?: "",
+//            localUser?.following_url ?: "",
+//            localUser?.gists_url?: "",
+//            localUser?.starred_url?: "",
+//            localUser?.subscriptions_url?: "",
+//            localUser?.organizations_url?: "",
+//            localUser?.repos_url?: "",
+//            localUser?.events_url?: "",
+//            localUser?.received_events_url?: "",
+//            localUser?.type?: "",
+//            localUser?.site_admin ?: "n", "", "", "", "", "", "", "", "",
+//            "", "", "", "", "", ""
+//        )
 
-        return Result(userData)
+        return Result(null)
     }
 }
