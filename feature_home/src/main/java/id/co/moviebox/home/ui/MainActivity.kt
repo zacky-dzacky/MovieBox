@@ -53,8 +53,8 @@ class MainActivity(override val layout: Int = R.layout.activity_main) : BaseFrag
         }
         TabLayoutMediator(binding.tabLayout, binding.mainNav) { tab, position ->
             when (position) {
-                0 -> tab.text = "Movie"
-                1 -> tab.text = "asdf`"
+                0 -> tab.text = "Trending"
+                1 -> tab.text = "Genre"
             }
         }.attach()
     }

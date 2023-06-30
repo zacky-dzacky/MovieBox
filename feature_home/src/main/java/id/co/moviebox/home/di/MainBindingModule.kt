@@ -7,8 +7,8 @@ import dagger.android.ContributesAndroidInjector
 import dagger.multibindings.IntoMap
 import id.co.moviebox.base_component.di.ActivityScope
 import id.co.moviebox.base_component.di.ViewModelKey
-import id.co.moviebox.home.ui.FavoriteFragment
-import id.co.moviebox.home.ui.HomeFragment
+import id.co.moviebox.home.ui.TrendingFragment
+import id.co.moviebox.home.ui.GenreFragment
 import id.co.moviebox.home.ui.MainActivity
 import id.co.moviebox.home.vm.MainViewModel
 
@@ -20,11 +20,11 @@ interface MainBindingModule {
 
     @ActivityScope
     @ContributesAndroidInjector
-    fun bindHomeFragment(): HomeFragment
+    fun bindHomeFragment(): GenreFragment
 
     @ActivityScope
     @ContributesAndroidInjector
-    fun bindFavoriteFragment(): FavoriteFragment
+    fun bindFavoriteFragment(): TrendingFragment
 
     @Binds
     @IntoMap

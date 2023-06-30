@@ -15,7 +15,7 @@ import id.co.moviebox.home.databinding.FavoriteFragmentBinding
 import id.co.moviebox.home.ui.adapter.FavoriteAdapter
 import id.co.moviebox.home.vm.MainViewModel
 
-class FavoriteFragment(override val layout: Int = R.layout.favorite_fragment): BaseFragment() {
+class TrendingFragment(override val layout: Int = R.layout.favorite_fragment): BaseFragment() {
 
     val viewModel: MainViewModel by viewModels { viewModelFactory }
     lateinit var binding: FavoriteFragmentBinding

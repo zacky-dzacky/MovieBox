@@ -5,6 +5,8 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ArrayAdapter
+import android.widget.ListAdapter
 import androidx.core.net.toUri
 import androidx.fragment.app.viewModels
 import androidx.navigation.NavDeepLinkRequest
@@ -16,7 +18,7 @@ import id.co.moviebox.home.ui.adapter.HomeAdapter
 import id.co.moviebox.home.vm.MainViewModel
 
 
-class HomeFragment(override val layout: Int = R.layout.home_fragment): BaseFragment() {
+class GenreFragment(override val layout: Int = R.layout.home_fragment): BaseFragment() {
 
     val viewModel: MainViewModel by viewModels { viewModelFactory }
     lateinit var binding: HomeFragmentBinding
@@ -45,6 +47,9 @@ class HomeFragment(override val layout: Int = R.layout.home_fragment): BaseFragm
             }
         }
         binding.rvUsers.adapter = homeAdapter
+        val arrayList = arrayListOf<String>("asdf", "asdf")
+        val adapterList = ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, arrayList)
+        binding.spGender.adapter =
     }
 
     private fun setObserver() {

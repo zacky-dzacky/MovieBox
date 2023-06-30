@@ -15,7 +15,7 @@
     </fragment>
     <fragment
         android:id="@+id/homeFragment"
-        android:name="id.co.moviebox.home.ui.HomeFragment"
+        android:name="id.co.moviebox.home.ui.GenreFragment"
         android:label="HomeFragment" >
 <!--        <action-->
 <!--            android:id="@+id/action_homeFragment_to_detail_nav"-->
@@ -23,7 +23,7 @@
     </fragment>
     <fragment
         android:id="@+id/favoriteFragment"
-        android:name="id.co.moviebox.home.ui.FavoriteFragment"
+        android:name="id.co.moviebox.home.ui.TrendingFragment"
         android:label="FavoriteFragment" />
     <fragment
 
