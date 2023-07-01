@@ -2,19 +2,19 @@ package id.co.moviebox.service_genre.domain.usecase
 
 import id.co.moviebox.base_component.model.Result
 import id.co.moviebox.base_component.service.BaseUseCase
-import id.co.moviebox.service_genre.domain.entity.DetailUser
+import id.co.moviebox.service_genre.domain.entity.DetailMovie
 import id.co.moviebox.service_genre.domain.repository.MoviesRepository
 
 class GetDetailUseCase(
     private val repository: MoviesRepository
-): BaseUseCase<String, DetailUser>() {
+): BaseUseCase<String, DetailMovie>() {
 
-    override val default: DetailUser
-        get() = DetailUser.DEFAULT
+    override val default: DetailMovie
+        get() = DetailMovie.DEFAULT
 
-    override suspend fun build(param: String): Result<DetailUser> {
-        val data = Result<DetailUser>()
-        data.data = repository.getUser(param)
+    override suspend fun build(param: String): Result<DetailMovie> {
+        val data = Result<DetailMovie>()
+        data.data = repository.getDetailMovie(param)
         return data
     }
 }

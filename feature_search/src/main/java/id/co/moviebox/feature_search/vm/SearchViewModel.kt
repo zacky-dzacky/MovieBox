@@ -16,7 +16,7 @@ class SearchViewModel @Inject constructor(
 
 
     fun searchUserByQuery(query: String): Flow<PagingData<MovieDto>> {
-        return searchUseCase.getMoviesByGenre(query, 1)
+        return searchUseCase.getMoviesByGenre(query)
             .cachedIn(viewModelScope)
     }
 }

@@ -4,7 +4,7 @@ import com.google.gson.annotations.SerializedName
 import java.io.Serializable
 
 data class MovieDto(
-    @SerializedName("description") val description: String?,
+    @SerializedName("description") val description: String? = "",
     @SerializedName("favorite_count") val favorite_count: Int? =  0,
     @SerializedName("id") val id: String? = "",
     @SerializedName("item_count") val item_count: Int? = 0,

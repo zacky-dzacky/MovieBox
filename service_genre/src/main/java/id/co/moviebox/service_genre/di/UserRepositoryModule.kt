@@ -5,11 +5,11 @@ import dagger.Module
 import dagger.Provides
 import id.co.moviebox.service_genre.data.api.flow.ShowSearchUserSource
 import id.co.moviebox.service_genre.data.api.mapper.MoviesByGenreMapper
-import id.co.moviebox.service_genre.data.api.mapper.UserDtoMapper
+import id.co.moviebox.service_genre.data.api.mapper.DetailMovieMapper
 import id.co.moviebox.service_genre.data.api.mapper.GenresDtoMapper
 import id.co.moviebox.service_genre.data.api.repository.SearchRepositoryImpl
 import id.co.moviebox.service_genre.data.api.repository.MovieRepositoryImpl
-import id.co.moviebox.service_genre.data.api.service.UserApi
+import id.co.moviebox.service_genre.data.api.service.MoviesApi
 import id.co.moviebox.service_genre.data.local.dao.UserLocalDao
 import id.co.moviebox.service_genre.data.local.mapper.UsersLocalMapper
 import id.co.moviebox.service_genre.data.local.repository.UserLocalRepositoryImpl
@@ -21,12 +21,12 @@ import id.co.moviebox.service_genre.domain.repository.MoviesRepository
 class UserRepositoryModule {
 
     @Provides
-    fun provideUserRepository(context: Context, userApi: UserApi, userLocalDao: UserLocalDao): MoviesRepository {
+    fun provideUserRepository(context: Context, userApi: MoviesApi, userLocalDao: UserLocalDao): MoviesRepository {
         return MovieRepositoryImpl(
             context,
             userApi,
             GenresDtoMapper(),
-            UserDtoMapper(),
+            DetailMovieMapper(),
             userLocalDao,
             UsersLocalMapper()
         )
@@ -48,7 +48,7 @@ class UserRepositoryModule {
     }
 
     @Provides
-    fun provideShowSearchUserSource(userApi: UserApi): ShowSearchUserSource {
+    fun provideShowSearchUserSource(userApi: MoviesApi): ShowSearchUserSource {
         return ShowSearchUserSource(
             userApi,
             MoviesByGenreMapper()

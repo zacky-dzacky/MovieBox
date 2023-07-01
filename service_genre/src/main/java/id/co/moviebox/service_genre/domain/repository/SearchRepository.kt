@@ -6,5 +6,5 @@ import id.co.moviebox.service_genre.domain.entity.SearchUser
 import kotlinx.coroutines.flow.Flow
 
 interface SearchRepository {
-    fun getMoviesByGenre(name: String, position: Int): Flow<PagingData<MovieDto>>
+    fun getMoviesByGenre(name: String): Flow<PagingData<MovieDto>>
 }

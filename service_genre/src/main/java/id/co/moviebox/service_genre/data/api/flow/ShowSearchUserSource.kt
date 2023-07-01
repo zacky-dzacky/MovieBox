@@ -4,13 +4,12 @@ import androidx.paging.PagingSource
 import androidx.paging.PagingState
 import id.co.moviebox.service_genre.data.api.dto.MovieDto
 import id.co.moviebox.service_genre.data.api.mapper.MoviesByGenreMapper
-import id.co.moviebox.service_genre.data.api.service.UserApi
-import id.co.moviebox.service_genre.domain.entity.SearchUser
+import id.co.moviebox.service_genre.data.api.service.MoviesApi
 import retrofit2.HttpException
 import java.io.IOException
 
 class ShowSearchUserSource(
-    private val userApi: UserApi,
+    private val userApi: MoviesApi,
     private val moviesByGenreMapper: MoviesByGenreMapper
 ) : PagingSource<Int, MovieDto>(){
 
@@ -30,7 +29,7 @@ class ShowSearchUserSource(
     override suspend fun load(params: LoadParams<Int>): LoadResult<Int, MovieDto> {
         val position = params.key ?: SHOWS_STARTING_INDEX
         return try {
-            val showsList = userApi.getMoviesByGenre("28", position)
+            val showsList = userApi.getMoviesByGenre(query, position)
             val data = moviesByGenreMapper(showsList)
             LoadResult.Page(
                 data = data ?: listOf(),

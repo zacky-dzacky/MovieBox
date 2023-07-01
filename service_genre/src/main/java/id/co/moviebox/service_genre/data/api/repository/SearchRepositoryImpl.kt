@@ -13,7 +13,7 @@ class SearchRepositoryImpl(
     private val userSearchUserSource: ShowSearchUserSource
 ) : SearchRepository {
 
-    override fun getMoviesByGenre(genreID: String, position: Int): Flow<PagingData<MovieDto>> {
+    override fun getMoviesByGenre(genreID: String): Flow<PagingData<MovieDto>> {
         userSearchUserSource.setQuery(genreID)
         return Pager(
             config = PagingConfig(

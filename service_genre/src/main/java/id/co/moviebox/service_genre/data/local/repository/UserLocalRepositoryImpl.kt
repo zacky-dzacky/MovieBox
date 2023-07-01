@@ -4,7 +4,7 @@ import id.co.moviebox.base_component.model.Result
 import id.co.moviebox.service_genre.data.local.dao.UserLocalDao
 import id.co.moviebox.service_genre.data.local.entity.UserLocal
 import id.co.moviebox.service_genre.data.local.mapper.UsersLocalMapper
-import id.co.moviebox.service_genre.domain.entity.DetailUser
+import id.co.moviebox.service_genre.domain.entity.DetailMovie
 import id.co.moviebox.service_genre.domain.entity.Genre
 import id.co.moviebox.service_genre.domain.repository.UserLocalRepository
 
@@ -34,7 +34,7 @@ class UserLocalRepositoryImpl(
         return Result(Unit)
     }
 
-    override suspend fun getDetailUser(userID: String): Result<DetailUser> {
+    override suspend fun getDetailUser(userID: String): Result<DetailMovie> {
 
         val asdf = userID
         val localUser = userLocalDao.findByUserID(asdf)

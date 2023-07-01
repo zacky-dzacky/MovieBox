@@ -47,7 +47,7 @@ dependencies {
     androidTestImplementation(Dependency.TestLibrary.ANNOTATION)
 
     importDagger()
-
+    importPaging()
     implementation(serviceGenre)
     implementation(core)
 //    implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.2.0")

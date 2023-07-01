@@ -41,8 +41,8 @@ class DetailViewModel @Inject constructor(
         true
     )
 
-    fun getDetailUser(username: String) {
-        getDetailUser.get(username)
+    fun getDetailUser(moviesID: String) {
+        getDetailUser.get(moviesID)
     }
 
     fun setAsFavorite(userID: Genre) {

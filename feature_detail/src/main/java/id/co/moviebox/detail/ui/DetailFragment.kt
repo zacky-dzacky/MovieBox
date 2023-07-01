@@ -12,7 +12,7 @@ import id.co.moviebox.base_component.ui.BaseFragment
 import id.co.moviebox.detail.R
 import id.co.moviebox.detail.databinding.DetailFragmentBinding
 import id.co.moviebox.detail.vm.DetailViewModel
-import id.co.moviebox.service_genre.domain.entity.DetailUser
+import id.co.moviebox.service_genre.domain.entity.DetailMovie
 import id.co.moviebox.service_genre.domain.entity.Genre
 
 class DetailFragment(override val layout: Int = R.layout.detail_fragment) : BaseFragment() {
@@ -71,8 +71,8 @@ class DetailFragment(override val layout: Int = R.layout.detail_fragment) : Base
                 showProfile(it)
                 if (setFavorite) {
                     val user = Genre(
-                        it.id,
-                        it.name
+                        it.id.toString(),
+                        it.title
                     )
                     viewModel.setAsFavorite(user)
                 }
@@ -102,7 +102,7 @@ class DetailFragment(override val layout: Int = R.layout.detail_fragment) : Base
         viewModel.getDetailLocal.listen(
             viewLifecycleOwner,
             onSuccess = {
-                if (it.id.isEmpty()) {
+                if (it.id == 0) {
                     setFavoriteStatus(false)
                 } else {
                     setFavoriteStatus(true)
@@ -127,17 +127,16 @@ class DetailFragment(override val layout: Int = R.layout.detail_fragment) : Base
 
     }
 
-    private fun showProfile(user: DetailUser) {
+    private fun showProfile(user: DetailMovie) {
         binding.apply {
             context?.let {
                 Glide.with(it)
-                    .load(user.avatar_url)
-                    .circleCrop()
+                    .load("https://image.tmdb.org/t/p/w500/${user.posterPath}")
                     .into(binding.imgUser)
             }
-            tvLogin.text = user.login
-            tvUsername.text = user.repos_url
-            tvBio.text = user.type
+            tvLogin.text = user.title
+            tvUsername.text = user.overview
+            tvBio.text = user.originalTitle
         }
     }
 

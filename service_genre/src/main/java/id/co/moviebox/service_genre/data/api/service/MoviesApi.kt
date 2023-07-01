@@ -2,7 +2,7 @@ package id.co.moviebox.service_genre.data.api.service
 
 import id.co.moviebox.base_component.model.Result
 import id.co.moviebox.base_component.model.ResultDto
-import id.co.moviebox.service_genre.data.api.dto.DetailUserDto
+import id.co.moviebox.service_genre.data.api.dto.DetailMovieDto
 import id.co.moviebox.service_genre.data.api.dto.SearchUserDto
 import id.co.moviebox.service_genre.data.api.dto.GenresDto
 import id.co.moviebox.service_genre.data.api.dto.MoviesByGenreDto
@@ -11,7 +11,7 @@ import retrofit2.http.Headers
 import retrofit2.http.Path
 import retrofit2.http.Query
 
-interface UserApi {
+interface MoviesApi {
 //    @Headers("accept: application/json")
     @Headers("Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI2N2FmYWE5NDBjYjkyNTk3NTRiNDFhNTMwZjQ0ZDk4MyIsInN1YiI6IjY0OWFjNWU2N2UzNDgzMDBmZjgyODQ0NCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.GdlulVbKr6oqlPyPrjMqefYBgNAQDRQLEf5ntBNmXGg")
     @GET("genre/movie/list?language=en")
@@ -24,9 +24,9 @@ interface UserApi {
         @Path("genre_id") genreID: String,
         @Query("page") page: Int
     ) : MoviesByGenreDto
-
-    @GET("users/{username}")
-    suspend fun getUsersByUsername(@Path("username") idUser: String): DetailUserDto
+    @Headers("Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI2N2FmYWE5NDBjYjkyNTk3NTRiNDFhNTMwZjQ0ZDk4MyIsInN1YiI6IjY0OWFjNWU2N2UzNDgzMDBmZjgyODQ0NCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.GdlulVbKr6oqlPyPrjMqefYBgNAQDRQLEf5ntBNmXGg")
+    @GET("movie/{movie_id}")
+    suspend fun getDetailMoviesByID(@Path("movie_id") movieID: String): DetailMovieDto
 
     @GET("search/users")
     suspend fun searchUserByName(@Query("q") query: String): ResultDto<SearchUserDto>
