@@ -5,7 +5,7 @@ import id.co.moviebox.base_component.service.BaseUseCase
 import id.co.moviebox.service_genre.domain.entity.Genre
 import id.co.moviebox.service_genre.domain.repository.UserLocalRepository
 
-class GetFavoriteUseCase(
+class GetTrendingUseCase(
     private val repository: UserLocalRepository
 ): BaseUseCase<Unit, List<Genre>>() {
 
@@ -14,7 +14,7 @@ class GetFavoriteUseCase(
 
     override suspend fun build(param: Unit): Result<List<Genre>> {
         val data = Result<List<Genre>>()
-        data.data = repository.getAllFavoriteUser()
+        data.data = repository.getTrending()
         return data
     }
 }

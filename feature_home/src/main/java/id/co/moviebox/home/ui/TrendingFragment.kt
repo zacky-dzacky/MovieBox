@@ -27,7 +27,7 @@ class TrendingFragment(override val layout: Int = R.layout.favorite_fragment): B
         savedInstanceState: Bundle?
     ): View {
         viewModel.run {
-            getFavoriteUsers()
+            getTrending()
         }
         binding = FavoriteFragmentBinding.inflate(layoutInflater)
         initUI()
@@ -39,7 +39,7 @@ class TrendingFragment(override val layout: Int = R.layout.favorite_fragment): B
     private fun initListener() {
         binding.swFavorite.setOnRefreshListener {
             viewModel.run {
-                getFavoriteUsers()
+                getTrending()
             }
         }
     }
@@ -57,7 +57,7 @@ class TrendingFragment(override val layout: Int = R.layout.favorite_fragment): B
 
     private fun setObservers() {
         viewModel.run {
-            getFavoriteUsers.listen(
+            getTrending.listen(
                 viewLifecycleOwner,
                 onSuccess = {
                     favoriteAdapter?.submitList(it)

@@ -8,14 +8,14 @@ import id.co.moviebox.base_component.extention.StatefulLiveData
 import id.co.moviebox.service_genre.data.api.dto.MovieDto
 import id.co.moviebox.service_genre.domain.entity.GetUserReq
 import id.co.moviebox.service_genre.domain.repository.SearchRepository
-import id.co.moviebox.service_genre.domain.usecase.GetFavoriteUseCase
+import id.co.moviebox.service_genre.domain.usecase.GetTrendingUseCase
 import id.co.moviebox.service_genre.domain.usecase.GetUsersUseCase
 import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
 
 class MainViewModel @Inject constructor(
     getUsersUseCase: GetUsersUseCase,
-    getFavoriteUseCase: GetFavoriteUseCase,
+    getTrendingUseCase: GetTrendingUseCase,
     private val searchRepository: SearchRepository
 ): ViewModel() {
 
@@ -25,8 +25,8 @@ class MainViewModel @Inject constructor(
         true
     )
 
-    val getFavoriteUsers = StatefulLiveData(
-        getFavoriteUseCase,
+    val getTrending = StatefulLiveData(
+        getTrendingUseCase,
         viewModelScope,
         true
     )
@@ -35,8 +35,8 @@ class MainViewModel @Inject constructor(
         getGenres.get(GetUserReq.DEFAULT)
     }
 
-    fun getFavoriteUsers() {
-        getFavoriteUsers.get(Unit)
+    fun getTrending() {
+        getTrending.get(Unit)
     }
 
     fun getMoviesByGenre(data: String): Flow<PagingData<MovieDto>> {

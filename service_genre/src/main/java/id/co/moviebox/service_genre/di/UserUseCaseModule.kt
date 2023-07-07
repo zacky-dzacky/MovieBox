@@ -5,7 +5,7 @@ import id.co.moviebox.service_genre.domain.repository.UserLocalRepository
 import id.co.moviebox.service_genre.domain.repository.MoviesRepository
 import id.co.moviebox.service_genre.domain.usecase.GetDetailLocalUseCase
 import id.co.moviebox.service_genre.domain.usecase.GetDetailUseCase
-import id.co.moviebox.service_genre.domain.usecase.GetFavoriteUseCase
+import id.co.moviebox.service_genre.domain.usecase.GetTrendingUseCase
 import id.co.moviebox.service_genre.domain.usecase.GetUsersUseCase
 import id.co.moviebox.service_genre.domain.usecase.SetFavoritelUseCase
 import id.co.moviebox.service_genre.domain.usecase.UnSetFavoritelUseCase
@@ -19,8 +19,8 @@ class UserUseCaseModule {
     }
 
     @Provides
-    fun provideFavoriteUseCase(repository: UserLocalRepository): GetFavoriteUseCase {
-        return GetFavoriteUseCase(repository)
+    fun provideFavoriteUseCase(repository: UserLocalRepository): GetTrendingUseCase {
+        return GetTrendingUseCase(repository)
     }
 
     @Provides

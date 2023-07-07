@@ -12,7 +12,7 @@ class UserLocalRepositoryImpl(
     private val userLocalDao: UserLocalDao,
     private val usersLocalMapper: UsersLocalMapper
 ): UserLocalRepository{
-    override suspend fun getAllFavoriteUser(): List<Genre> {
+    override suspend fun getTrending(): List<Genre> {
         return usersLocalMapper(userLocalDao.getAll())
     }
 
